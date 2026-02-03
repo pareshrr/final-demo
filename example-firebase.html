@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Integration Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f6f7fb;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { 
+            color: #282e3e;
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .subtitle {
+            color: #586380;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        button {
+            background: #4255ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        button:hover { background: #3347dd; }
+        button:disabled { 
+            background: #d9dce3; 
+            cursor: not-allowed;
+        }
+        .study-sets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .study-set-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .study-set-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8e6f9;
+            color: #4255ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .set-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #282e3e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .set-icon {
+            width: 32px;
+            height: 32px;
+            background: #f6f7fb;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .set-stats {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .terms-badge {
+            background: #e8e6f9;
+            color: #4255ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #586380;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .star {
+            color: #ffcd1f;
+            font-size: 20px;
+        }
+        .divider {
+            width: 4px;
+            height: 4px;
+            background: #d9dce3;
+            border-radius: 50%;
+        }
+        .set-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid #f0f1f4;
+        }
+        .creator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .creator-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .creator-name {
+            color: #282e3e;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .preview-btn {
+            background: #f6f7fb;
+            color: #586380;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        .preview-btn:hover {
+            background: #e8e9ed;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #586380;
+        }
+        .status-message {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .status-message strong {
+            color: #4255ff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Firebase Study Sets</h1>
+        <p class="subtitle">Displaying study sets from the shared Firestore database</p>
+        
+        <button id="loadBtn">🔄 Refresh Study Sets</button>
+        
+        <div id="flashcardList" class="study-sets-grid"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, getDocs, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration (Shared Workshop Project)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIh2SoFs2-3ODVvvwwZGacSsRXQG2FZV8",
+            authDomain: "quizlet-api-ac8b7.firebaseapp.com",
+            projectId: "quizlet-api-ac8b7",
+            storageBucket: "quizlet-api-ac8b7.firebasestorage.app",
+            messagingSenderId: "685333840049",
+            appId: "1:685333840049:web:fc87e352a84aaa085c6290"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const loadBtn = document.getElementById('loadBtn');
+        const flashcardList = document.getElementById('flashcardList');
+        
+        const DISPLAY_LIMIT = 20; // Show first 20 cards
+
+        // Load flashcards
+        loadBtn.addEventListener('click', loadFlashcards);
+
+        async function loadFlashcards() {
+            loadBtn.disabled = true;
+            loadBtn.textContent = '⏳ Loading...';
+            
+            try {
+                // Load flashcards without sorting (since field names vary)
+                const q = query(
+                    collection(db, 'flashcard_sets'),
+                    limit(DISPLAY_LIMIT)
+                );
+                const snapshot = await getDocs(q);
+                
+                flashcardList.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    flashcardList.innerHTML = '<div class="empty-state"><p>No study sets found in the database.</p></div>';
+                } else {
+                    let count = 0;
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        
+                        // Extract data fields
+                        const title = data.set_title || data.term || 'Untitled Set';
+                        const termCount = data.number_of_terms || 0;
+                        const studiersToday = data.studiers_today || 0;
+                        const rating = data.avg_rating || 0;
+                        const ratingCount = data.rating_count || 0;
+                        const creatorUsername = data.creator_username || 'Unknown';
+                        const hasImages = data.has_images || false;
+                        
+                        // Create card
+                        const card = document.createElement('div');
+                        card.className = 'study-set-card';
+                        
+                        // Get first letter for avatar
+                        const initial = creatorUsername.charAt(0).toUpperCase();
+                        
+                        card.innerHTML = `
+                            ${studiersToday > 0 ? `<div class="badge">📈 ${studiersToday} studiers today</div>` : ''}
+                            
+                            <div class="set-title">
+                                ${title}
+                                ${hasImages ? '<span class="set-icon">🖼️</span>' : ''}
+                            </div>
+                            
+                            <div class="set-stats">
+                                <div class="terms-badge">${termCount} terms</div>
+                                ${rating > 0 ? `
+                                    <span class="divider"></span>
+                                    <div class="rating">
+                                        <span class="star">⭐</span>
+                                        <span>${rating.toFixed(1)} (${ratingCount})</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="set-footer">
+                                <div class="creator">
+                                    <div class="creator-avatar">${initial}</div>
+                                    <span class="creator-name">${creatorUsername}</span>
+                                </div>
+                                <button class="preview-btn">Preview</button>
+                            </div>
+                        `;
+                        
+                        flashcardList.appendChild(card);
+                        count++;
+                    });
+                    
+                    // Show status message
+                    const statusMsg = document.createElement('div');
+                    statusMsg.className = 'status-message';
+                    statusMsg.innerHTML = `
+                        <strong>✅ Successfully loaded ${count} study set${count !== 1 ? 's' : ''}</strong><br>
+                        <span style="font-size: 14px; color: #586380; margin-top: 8px; display: block;">
+                            Database connection verified!
+                        </span>
+                    `;
+                    flashcardList.appendChild(statusMsg);
+                }
+            } catch (error) {
+                console.error('Error loading flashcards:', error);
+                flashcardList.innerHTML = `
+                    <div style="color: red; padding: 20px; text-align: center;">
+                        <strong>❌ Error loading flashcards</strong><br>
+                        <span style="font-size: 14px;">${error.message}</span>
+                    </div>
+                `;
+            }
+            
+            loadBtn.disabled = false;
+            loadBtn.textContent = '🔄 Refresh Flashcards';
+        }
+
+        // Load on page load
+        loadFlashcards();
+    </script>
+</body>
+</html>
