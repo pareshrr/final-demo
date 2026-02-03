@@ -5,6 +5,8 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+    // Always set JSON content type
+    res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -15,6 +17,13 @@ export default async function handler(req, res) {
     
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
+    }
+    
+    // Check if API key is configured
+    if (!process.env.OPENAI_API_KEY) {
+        return res.status(500).json({ 
+            error: 'OpenAI API key is not configured. Please add OPENAI_API_KEY to your environment variables.' 
+        });
     }
     
     try {
