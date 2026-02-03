@@ -1,0 +1,668 @@
+/* ============================================
+   Quizlet Design System - Font Face Declarations
+   ============================================ */
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-SemiBoldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 2';
+    src: url('fonts/HurmeGeometricSans2-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: block;
+}
+
+/* ============================================
+   CSS Variables - Quizlet Design System Tokens
+   ============================================ */
+
+/* ----------------------------------------
+   Reference Tokens (Primitives)
+   ---------------------------------------- */
+:root {
+    /* Gray Scale */
+    --ref-color-gray-100: #FFFFFF;
+    --ref-color-gray-100-none: #FFFFFF00;
+    --ref-color-gray-200: #F6F7FB;
+    --ref-color-gray-300: #EDEFF4;
+    --ref-color-gray-400: #D9DDE8;
+    --ref-color-gray-500: #939BB4;
+    --ref-color-gray-600: #586380;
+    --ref-color-gray-700: #2E3856;
+    --ref-color-gray-800: #282E3E;
+    --ref-color-gray-900: #1A1D28;
+    --ref-color-gray-exception-100-a8: #FFFFFF14;
+    --ref-color-gray-exception-100-a32: #FFFFFF52;
+    --ref-color-gray-exception-600-a0: #58638000;
+    --ref-color-gray-exception-600-a8: #58638014;
+    --ref-color-gray-exception-600-a12: #5863801F;
+    --ref-color-gray-exception-750: #202040;
+    
+    /* Twilight (Primary Brand) */
+    --ref-color-twilight-100: #EDEFFF;
+    --ref-color-twilight-200: #DBDFFF;
+    --ref-color-twilight-300: #A8B1FF;
+    --ref-color-twilight-400: #7583FF;
+    --ref-color-twilight-500: #4255FF;
+    --ref-color-twilight-600: #423ED8;
+    --ref-color-twilight-700: #1F1C8B;
+    --ref-color-twilight-800: #14125C;
+    --ref-color-twilight-900: #0A092D;
+    --ref-color-twilight-900-none: #0A092D00;
+    
+    /* Sunset (Upgrade/Premium) */
+    --ref-color-sunset-100: #FFF9E3;
+    --ref-color-sunset-200: #FFEDAB;
+    --ref-color-sunset-300: #FFDC62;
+    --ref-color-sunset-400: #FFCD1F;
+    --ref-color-sunset-500: #997700;
+    
+    /* Mint (Success) */
+    --ref-color-mint-100: #E6FCF4;
+    --ref-color-mint-200: #C7F7E6;
+    --ref-color-mint-300: #98F1D1;
+    --ref-color-mint-400: #59E8B5;
+    --ref-color-mint-500: #18AE79;
+    --ref-color-mint-600: #12815A;
+    
+    /* Lilac */
+    --ref-color-lilac-100: #FCF0FF;
+    --ref-color-lilac-200: #F7D9FF;
+    --ref-color-lilac-300: #EEAAFF;
+    --ref-color-lilac-400: #E372FF;
+    --ref-color-lilac-500: #9900BE;
+    
+    /* Sky Blue */
+    --ref-color-skyblue-100: #EAF9FF;
+    --ref-color-skyblue-200: #CBF1FF;
+    --ref-color-skyblue-300: #98E3FF;
+    --ref-color-skyblue-400: #51CFFF;
+    --ref-color-skyblue-500: #008EC4;
+    
+    /* Lemon */
+    --ref-color-lemon-100: #FDFFE9;
+    --ref-color-lemon-200: #FAFFBB;
+    --ref-color-lemon-300: #F5FF7D;
+    --ref-color-lemon-400: #EBFF03;
+    --ref-color-lemon-500: #D4E603;
+    
+    /* Sherbert (Warning) */
+    --ref-color-sherbert-100: #FFF6EF;
+    --ref-color-sherbert-200: #FFE8D8;
+    --ref-color-sherbert-300: #FFC38C;
+    --ref-color-sherbert-400: #FF983A;
+    --ref-color-sherbert-500: #CC4E00;
+    
+    /* Cherry (Error/Danger) */
+    --ref-color-cherry-300: #FF7873;
+    --ref-color-cherry-400: #DA4543;
+    --ref-color-cherry-500: #B00020;
+    
+    /* Scrim (Overlays) */
+    --ref-color-scrim-100: #0A092D14;
+    --ref-color-scrim-200: #2E385680;
+    --ref-color-scrim-300: #0101108F;
+    
+    /* Other/Accent Colors */
+    --ref-color-cucumber: #D9FFCC;
+    --ref-color-dandelion: #ECE381;
+    --ref-color-grape-400: #A157E9;
+    --ref-color-grape-500: #A533FF;
+    --ref-color-grape-600: #932EE8;
+    --ref-color-jam: #D326D7;
+    --ref-color-magenta-400: #F442A0;
+
+    /* Typography Scale */
+    --ref-text-size-xs: 12px;
+    --ref-text-size-sm: 14px;
+    --ref-text-size-base: 16px;
+    --ref-text-size-lg: 18px;
+    --ref-text-size-xl: 20px;
+    --ref-text-size-2xl: 24px;
+    --ref-text-size-3xl: 30px;
+    --ref-text-size-4xl: 36px;
+    --ref-text-size-5xl: 48px;
+
+    /* Font Weights */
+    --ref-font-weight-normal: 400;
+    --ref-font-weight-medium: 500;
+    --ref-font-weight-semibold: 600;
+    --ref-font-weight-bold: 700;
+
+    /* Line Heights */
+    --ref-line-height-tight: 1.25;
+    --ref-line-height-normal: 1.5;
+    --ref-line-height-relaxed: 1.75;
+
+    /* Spacing Scale */
+    --ref-spacing-1: 4px;
+    --ref-spacing-2: 8px;
+    --ref-spacing-3: 12px;
+    --ref-spacing-4: 16px;
+    --ref-spacing-5: 20px;
+    --ref-spacing-6: 24px;
+    --ref-spacing-8: 32px;
+    --ref-spacing-10: 40px;
+    --ref-spacing-12: 48px;
+    --ref-spacing-16: 64px;
+    --ref-spacing-20: 80px;
+    --ref-spacing-24: 96px;
+    --ref-spacing-32: 128px;
+
+    /* Border Radius */
+    --ref-radius-none: 0;
+    --ref-radius-sm: 4px;
+    --ref-radius-md: 6px;
+    --ref-radius-lg: 8px;
+    --ref-radius-xl: 12px;
+    --ref-radius-2xl: 16px;
+    --ref-radius-3xl: 20px;
+    --ref-radius-full: 9999px;
+
+    /* Shadows */
+    --ref-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --ref-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ref-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --ref-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --ref-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Transitions */
+    --ref-transition-fast: 0.15s ease;
+    --ref-transition-normal: 0.2s ease;
+    --ref-transition-slow: 0.3s ease;
+
+    /* Z-Index Scale */
+    --ref-z-index-dropdown: 1000;
+    --ref-z-index-sticky: 1020;
+    --ref-z-index-fixed: 1030;
+    --ref-z-index-modal-backdrop: 1040;
+    --ref-z-index-modal: 1050;
+    --ref-z-index-popover: 1060;
+    --ref-z-index-tooltip: 1070;
+}
+
+/* ----------------------------------------
+   Semantic Tokens (Aliases)
+   ---------------------------------------- */
+:root {
+    /* Colors */
+    --color-primary: var(--ref-color-twilight-500);
+    --color-primary-hover: var(--ref-color-twilight-600);
+    --color-secondary: var(--ref-color-gray-600);
+    --color-success: var(--ref-color-mint-500);
+    --color-warning: var(--ref-color-sherbert-400);
+    --color-error: var(--ref-color-cherry-500);
+
+    /* Typography */
+    --font-family: 'Hurme Geometric Sans 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    --text-xs: var(--ref-text-size-xs);
+    --text-sm: var(--ref-text-size-sm);
+    --text-base: var(--ref-text-size-base);
+    --text-lg: var(--ref-text-size-lg);
+    --text-xl: var(--ref-text-size-xl);
+    --text-2xl: var(--ref-text-size-2xl);
+    --text-3xl: var(--ref-text-size-3xl);
+    --text-4xl: var(--ref-text-size-4xl);
+    --text-5xl: var(--ref-text-size-5xl);
+
+    --font-weight-normal: var(--ref-font-weight-normal);
+    --font-weight-medium: var(--ref-font-weight-medium);
+    --font-weight-semibold: var(--ref-font-weight-semibold);
+    --font-weight-bold: var(--ref-font-weight-bold);
+
+    --line-height-tight: var(--ref-line-height-tight);
+    --line-height-normal: var(--ref-line-height-normal);
+    --line-height-relaxed: var(--ref-line-height-relaxed);
+
+    /* Spacing */
+    --spacing-xs: var(--ref-spacing-1);
+    --spacing-sm: var(--ref-spacing-2);
+    --spacing-md: var(--ref-spacing-3);
+    --spacing-lg: var(--ref-spacing-4);
+    --spacing-xl: var(--ref-spacing-5);
+    --spacing-xxl: var(--ref-spacing-6);
+    --spacing-3xl: var(--ref-spacing-8);
+    --spacing-4xl: var(--ref-spacing-10);
+
+    /* Border Radius */
+    --radius-none: var(--ref-radius-none);
+    --radius-sm: var(--ref-radius-sm);
+    --radius-md: var(--ref-radius-md);
+    --radius-lg: var(--ref-radius-lg);
+    --radius-xl: var(--ref-radius-xl);
+    --radius-2xl: var(--ref-radius-2xl);
+    --radius-3xl: var(--ref-radius-3xl);
+    --radius-full: var(--ref-radius-full);
+    
+    /* Shadows */
+    --shadow-sm: var(--ref-shadow-sm);
+    --shadow-md: var(--ref-shadow-md);
+    --shadow-lg: var(--ref-shadow-lg);
+    --shadow-xl: var(--ref-shadow-xl);
+    --shadow-2xl: var(--ref-shadow-2xl);
+    
+    /* Transitions */
+    --transition-fast: var(--ref-transition-fast);
+    --transition-normal: var(--ref-transition-normal);
+    --transition-slow: var(--ref-transition-slow);
+
+    /* Z-Index */
+    --z-index-dropdown: var(--ref-z-index-dropdown);
+    --z-index-sticky: var(--ref-z-index-sticky);
+    --z-index-fixed: var(--ref-z-index-fixed);
+    --z-index-modal-backdrop: var(--ref-z-index-modal-backdrop);
+    --z-index-modal: var(--ref-z-index-modal);
+    --z-index-popover: var(--ref-z-index-popover);
+    --z-index-tooltip: var(--ref-z-index-tooltip);
+}
+
+/* ----------------------------------------
+   Surface & Text Tokens
+   ---------------------------------------- */
+:root {
+        /* Surfaces */
+    --surface-base: var(--ref-color-gray-100);
+    --surface-hover: var(--ref-color-gray-200);
+    --surface-active: var(--ref-color-gray-300);
+    --surface-secondary: var(--ref-color-gray-200);
+    --surface-tertiary: var(--ref-color-gray-300);
+    --surface-overlay: rgba(255, 255, 255, 0.95);
+        
+        /* Text */
+    --text-primary: var(--ref-color-gray-900);
+    --text-secondary: var(--ref-color-gray-600);
+    --text-tertiary: var(--ref-color-gray-500);
+    --text-inverse: var(--ref-color-gray-100);
+    --text-brand: var(--ref-color-twilight-600);
+    --text-success: var(--ref-color-mint-600);
+    --text-warning: var(--ref-color-sherbert-500);
+    --text-error: var(--ref-color-cherry-500);
+
+    /* Borders */
+    --border: var(--ref-color-gray-300);
+    --border-hover: var(--ref-color-gray-400);
+    --border-focus: var(--ref-color-twilight-400);
+    --border-error: var(--ref-color-cherry-400);
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--surface-base);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all var(--transition-fast);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Material Symbols */
+.material-symbols-rounded {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' -25,
+        'opsz' 24;
+    font-size: 24px;
+    line-height: 1;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+/* Universal filled star icon - applies to any starred state */
+.material-symbols-rounded.filled,
+.starred .material-symbols-rounded,
+.starred.material-symbols-rounded,
+button.starred .material-symbols-rounded,
+.term-star-btn.starred .material-symbols-rounded,
+.panel-term-star.starred .material-symbols-rounded,
+.table-term-star.starred .material-symbols-rounded,
+.control-btn.starred .material-symbols-rounded,
+.experience-control-btn.star.starred .material-symbols-rounded,
+.study-mode-card-star.starred .material-symbols-rounded {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' -25,
+        'opsz' 24 !important;
+}
+
+/* ============================================
+   Top Navigation
+   ============================================ */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 var(--spacing-3xl) 0 var(--spacing-lg);
+    background: var(--surface-base);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-right: var(--spacing-3xl);
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-full);
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.icon-btn:hover {
+    background: var(--ref-color-gray-200);
+}
+
+.icon-btn .material-symbols-rounded {
+    color: var(--ref-color-gray-600);
+    font-size: 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 32px;
+    width: 32px;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--ref-color-gray-200);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--ref-color-gray-600);
+    font-size: 24px;
+}
+
+.search-placeholder {
+    color: var(--ref-color-gray-500);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    user-select: none;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: var(--spacing-3xl);
+}
+
+.create-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--ref-color-twilight-500);
+    border-radius: var(--radius-full);
+    color: white;
+    padding: var(--spacing-sm);
+}
+
+.create-btn:hover {
+    background: var(--ref-color-twilight-600);
+}
+
+.create-btn .material-symbols-rounded {
+    color: white;
+    font-size: 24px;
+}
+
+.upgrade-btn {
+    padding: 10px 16px;
+    background: var(--ref-color-sunset-400);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--ref-color-gray-800);
+}
+
+.upgrade-btn:hover {
+    filter: brightness(0.95);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main Content Area */
+.main-content {
+    min-height: calc(100vh - 64px);
+    background: var(--surface-base);
+}
+
+/* Mobile styles for top navigation */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .search-bar {
+        max-width: 400px;
+    }
+    
+    .search-bar {
+        display: none;
+    }
+    
+    .upgrade-btn {
+        display: none;
+    }
+}
+
+/* ============================================
+   Debug Modal Styles
+   ============================================ */
+
+.debug-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--ref-color-scrim-300);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.debug-modal-overlay.active {
+    display: flex;
+}
+
+.debug-modal {
+    width: 100%;
+    max-width: 600px;
+    background: var(--surface-base);
+    border: none;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-2xl);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.2s ease;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.debug-modal-overlay.active .debug-modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Top section with close button */
+.debug-modal-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: var(--spacing-lg) var(--spacing-lg) 0;
+    height: 32px;
+}
+
+.debug-modal-close {
+    background: var(--ref-color-gray-200);
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+}
+
+.debug-modal-close:hover {
+    background: var(--ref-color-gray-300);
+    color: var(--text-primary);
+}
+
+/* Content section */
+.debug-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+    padding: var(--spacing-lg) var(--spacing-3xl) var(--spacing-3xl);
+    min-height: 400px;
+}
+
+.debug-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.debug-modal-title {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    line-height: 40px;
+    margin: 0;
+}
+
+
+/* Mobile styles for debug modal */
+@media (max-width: 768px) {
+    .debug-modal {
+        margin: var(--spacing-md);
+    max-width: none;
+    }
+
+    .debug-modal-content {
+        padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    gap: var(--spacing-lg);
+    }
+
+    .debug-modal-top {
+        padding: var(--spacing-md) var(--spacing-md) 0;
+    }
+}

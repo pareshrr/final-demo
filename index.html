@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Template</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="fonts/HurmeGeometricSans2-Regular.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/HurmeGeometricSans2-SemiBold.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,-25&display=block" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Top Navigation -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <button class="icon-btn menu-btn" aria-label="Menu">
+                <span class="material-symbols-rounded">menu</span>
+            </button>
+            <div class="logo">
+                <img src="images/Q.png" alt="Quizlet" width="32" height="32">
+            </div>
+        </div>
+        
+        <div class="search-bar">
+            <span class="material-symbols-rounded search-icon">search</span>
+            <span class="search-placeholder">Search for flashcards</span>
+        </div>
+        
+        <div class="nav-right">
+            <button class="create-btn" aria-label="Create">
+                <span class="material-symbols-rounded">add</span>
+            </button>
+            <button class="upgrade-btn">Upgrade to Plus</button>
+            <div class="avatar">
+                <img src="images/Avatar.png" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Add your content here -->
+    </main>
+
+    <!-- Debug Menu Modal -->
+    <div class="debug-modal-overlay" id="debug-modal-overlay">
+        <div class="debug-modal">
+            <div class="debug-modal-top">
+                <button class="debug-modal-close" id="debug-modal-close" aria-label="Close debug menu">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div class="debug-modal-content">
+                <div class="debug-modal-header">
+                    <h2 class="debug-modal-title">Debug menu</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "workshop-openai-firebase",
+  "version": "1.0.0",
+  "description": "Workshop project for OpenAI and Firebase integration",
+  "type": "module",
+  "scripts": {
+    "prestart": "node prestart.js",
+    "setup": "node setup.js",
+    "verify": "node verify-setup.js",
+    "test-setup": "node test-setup.js",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "firebase": "^12.8.0",
+    "openai": "^6.17.0"
+  }
+}
